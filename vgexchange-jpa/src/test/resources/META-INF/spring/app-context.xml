@@ -15,6 +15,7 @@
 	<context:component-scan base-package="br.com.vgsolutions.vgexchange" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://54.201.244.100:3306/vgxdb" />
 		<property name="username" value="usr_vgx_homolog" />
@@ -24,15 +25,13 @@
 
 	<bean id="entityManagerFactory"
 	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-
 	<property name="dataSource" ref="dataSource" />
 	<property name="jpaVendorAdapter">
 		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 	</property>
 
-
 	<property name="packagesToScan" value="br.com.vgsolutions.vgexchange.entity" />
-
+	<property name="persistenceProvider" value="org.hibernate.ejb.HibernatePersistence"/>
 	<property name="jpaProperties">
 		<props>
 			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
