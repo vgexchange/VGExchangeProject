@@ -3,7 +3,6 @@ package br.com.vgsolutions.vgexchange;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +19,7 @@ import br.com.vgsolutions.vgexchange.util.VGXORMTestUtil;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UsuarioPersistenceTests {
 
-	@PersistenceContext(unitName="testPU")
+	@PersistenceContext
 	private EntityManager entityManager;
 	
 	@Before

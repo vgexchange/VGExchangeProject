@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class AutoridadeUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-//	@Id
-//	@Column(name="usuarios_email")
-//	private String emailUsuario;
-
 	@Id
+	@Column(name="usuarios_email")
+	private String emailUsuario;
+
+//	@Id
 	//bi-directional one-to-one association to Usuario
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="usuarios_email")

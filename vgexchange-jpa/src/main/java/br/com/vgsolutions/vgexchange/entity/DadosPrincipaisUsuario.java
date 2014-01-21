@@ -1,7 +1,9 @@
 package br.com.vgsolutions.vgexchange.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -15,11 +17,11 @@ import java.util.Date;
 public class DadosPrincipaisUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-//	@Id
-//	@Column(name="usuarios_email")
-//	private String usuariosEmail;
-
 	@Id
+	@Column(name="usuarios_email")
+	private String usuariosEmail;
+
+//	@Id
 	//bi-directional one-to-one association to Usuario
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="usuarios_email")

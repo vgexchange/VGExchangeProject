@@ -9,40 +9,43 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<tx:annotation-driven />
-	<context:annotation-config/>
-
+	<context:annotation-config />
 
 	<context:component-scan base-package="br.com.vgsolutions.vgexchange.entity" />
 	<context:component-scan base-package="br.com.vgsolutions.vgexchange" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://54.201.244.100:3306/VGXDB" />
+		<property name="url" value="jdbc:mysql://54.201.244.100:3306/vgxdb" />
 		<property name="username" value="usr_vgx_homolog" />
 		<property name="password" value="1801Ohio" />
 	</bean>
 
 
-	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+	<bean id="entityManagerFactory"
+	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="showSql" value="false" />
-                <property name="generateDdl" value="true" />
-                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
-            </bean>
-        </property>
-        <property name="persistenceUnitName" value="testPU"/>
-        <property name="persistenceUnitManager">
-            <bean class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
-                <property name="defaultDataSource" ref="dataSource"></property>
-            </bean>
-        </property>
-        <property name="loadTimeWeaver">
-            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
-        </property>
+	<property name="dataSource" ref="dataSource" />
+	<property name="jpaVendorAdapter">
+		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+	</property>
 
-    </bean>	
-		
+
+	<property name="packagesToScan" value="br.com.vgsolutions.vgexchange.entity" />
+
+	<property name="jpaProperties">
+		<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+			<prop key="hibernate.max_fetch_depth">3</prop>
+			<prop key="hibernate.show.sql">true</prop>
+			<prop key="hibernate.connection.charSet"> UTF-8</prop>
+		</props>
+
+	</property>
+</bean>
+
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+       <property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
+
 </beans>

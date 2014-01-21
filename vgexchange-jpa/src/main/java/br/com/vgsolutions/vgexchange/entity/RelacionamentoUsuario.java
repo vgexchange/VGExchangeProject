@@ -26,12 +26,12 @@ public class RelacionamentoUsuario implements Serializable {
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="usuarios_emailA")
+	@JoinColumn(name="usuarios_emailA", insertable=false, updatable=false)
 	private Usuario usuarioA;
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="usuarios_emailB")
+	@JoinColumn(name="usuarios_emailB", insertable=false, updatable=false)
 	private Usuario usuarioB;
 
 	//bi-directional many-to-one association to RelacionamentosStatus
