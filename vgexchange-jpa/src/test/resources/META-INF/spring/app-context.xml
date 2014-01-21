@@ -31,7 +31,7 @@
 	</property>
 
 	<property name="packagesToScan" value="br.com.vgsolutions.vgexchange.entity" />
-	<property name="persistenceProvider" value="org.hibernate.ejb.HibernatePersistence"/>
+	<property name="persistenceProvider" value="org.eclipse.persistence.jpa.PersistenceProvider"/>
 	<property name="jpaProperties">
 		<props>
 			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
