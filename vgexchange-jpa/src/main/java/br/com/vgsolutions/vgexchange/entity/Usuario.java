@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-
+//teste jonas
 /**
  * The persistent class for the usuarios database table.
  * 
